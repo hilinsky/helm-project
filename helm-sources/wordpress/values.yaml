@@ -9,7 +9,7 @@ replicaCount: 1
 image:
   registry: jfrog.it-academy.by
   repository: public/nginx-fpm-wordpress
-  tag: "v0.0.9"
+  tag: "v0.0.10"
   # This sets the pull policy for images.
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
