@@ -3,7 +3,7 @@ entries:
   wordpress:
   - apiVersion: v2
     appVersion: "0.1"
-    created: "2024-12-02T12:52:52.225454092Z"
+    created: "2024-12-02T13:44:06.670883294Z"
     description: A Helm chart for Kubernetes
     digest: 41c09b43b5e257236a2dd63fb1e82c9ec132e3032227190b66f8970667ba9613
     name: wordpress
@@ -12,8 +12,18 @@ entries:
     - https://hilinsky.github.io/helm-project/helm-releases/wordpress-0.1.0.tgz
     version: 0.1.0
   - apiVersion: v2
+    appVersion: 0.0.11
+    created: "2024-12-02T13:44:06.666277236Z"
+    description: A Helm chart for Kubernetes
+    digest: cd3956db5224e33995c9b2317c267eadf9129494f3f21229c605cc4ff4374dfb
+    name: wordpress
+    type: application
+    urls:
+    - https://hilinsky.github.io/helm-project/helm-releases/wordpress-0.0.11.tgz
+    version: 0.0.11
+  - apiVersion: v2
     appVersion: 0.0.10
-    created: "2024-12-02T12:52:52.222870988Z"
+    created: "2024-12-02T13:44:06.664612687Z"
     description: A Helm chart for Kubernetes
     digest: 52d1e6b47935894ea8178a98287c9e284e60a3e5bf89b3c1ec7c7d72af45df79
     name: wordpress
@@ -23,7 +33,7 @@ entries:
     version: 0.0.10
   - apiVersion: v2
     appVersion: 0.0.9
-    created: "2024-12-02T12:52:52.224551029Z"
+    created: "2024-12-02T13:44:06.66917429Z"
     description: A Helm chart for Kubernetes
     digest: c59e0cba8b83c6fe08254c22c7240d3272dc1a746b2b5102a7f82b631c31155c
     name: wordpress
@@ -33,7 +43,7 @@ entries:
     version: 0.0.9
   - apiVersion: v2
     appVersion: 0.0.4
-    created: "2024-12-02T12:52:52.223716844Z"
+    created: "2024-12-02T13:44:06.667641235Z"
     description: A Helm chart for Kubernetes
     digest: 7b6096560df101e35486831bd33a3d017da3f61f2c3da68ae095da0e024e4986
     name: wordpress
@@ -41,4 +51,4 @@ entries:
     urls:
     - https://hilinsky.github.io/helm-project/helm-releases/wordpress-0.0.4.tgz
     version: 0.0.4
-generated: "2024-12-02T12:52:52.220841666Z"
+generated: "2024-12-02T13:44:06.663598466Z"
