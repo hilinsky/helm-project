@@ -1,0 +1,164 @@
+# Default values for wordpress.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# This will set the replicaset count more information can be found here: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
+replicaCount: 1
+
+# This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
+image:
+  registry: jfrog.it-academy.by
+  repository: public/nginx-fpm-wordpress
+  tag: 0.1
+  # This sets the pull policy for images.
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+
+# This is for the secretes for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+imagePullSecrets: []
+# This is to override the chart name.
+nameOverride: ""
+fullnameOverride: ""
+
+#This section builds out the service account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Automatically mount a ServiceAccount's API credentials?
+  automount: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+# This is for setting Kubernetes Annotations to a Pod.
+# For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/ 
+podAnnotations: {}
+# This is for setting Kubernetes Labels to a Pod.
+# For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+podLabels: {}
+
+podSecurityContext:
+  runAsUser: 33
+  runAsGroup: 33
+  fsGroup: 33
+
+securityContext:
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 33
+  runAsGroup: 33
+
+# This is for setting up a service more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/
+service:
+  # This sets the service type more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
+  type: ClusterIP
+  # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
+  port: 8080
+
+# This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: wordpress.k8s-20.sa
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources:
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+  limits:
+    cpu: 3
+    memory: 3Gi
+  requests:
+    cpu: 2
+    memory: 2Gi
+
+pvc:
+  storage_class: nfs-hilinsky
+  storage_size: 10Gi
+
+wp:
+  config: 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
+
+# This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+livenessProbe:
+  httpGet:
+    path: /
+    port: 8080
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
+  successThreshold: 1
+  failureThreshold: 3
+readinessProbe:
+  httpGet:
+    path: /
+    port: 8080
+  initialDelaySeconds: 10
+  periodSeconds: 5
+  timeoutSeconds: 5
+  successThreshold: 1
+  failureThreshold: 3
+#This section is for setting up autoscaling more information can be found here: https://kubernetes.io/docs/concepts/workloads/autoscaling/
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+# Additional volumes on the output Deployment definition.
+volumes:
+# - name: foo
+#   secret:
+#     secretName: mysecret
+#     optional: false
+  - name: persistent-storage-wordpress
+    persistentVolumeClaim:
+      claimName: pv-claim-wordpress
+  - name: wp-config-volume
+    secret:
+      secretName: wordpress-config
+
+# Additional volumeMounts on the output Deployment definition.
+volumeMounts:
+# - name: foo
+#   mountPath: "/etc/foo"
+#   readOnly: true
+  - name: persistent-storage-wordpress
+    mountPath: "/var/www/html/wp-content/plugins"
+    subPath: plugins
+  - name: persistent-storage-wordpress
+    mountPath: "/var/www/html/wp-content/uploads"
+    subPath: uploads
+  - name: wp-config-volume
+    mountPath: "/var/www/html/wp-config.php"
+    subPath: wp-config.php
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
