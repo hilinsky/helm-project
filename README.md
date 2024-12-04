@@ -1,3 +1,3 @@
 # Helm repository
 
-This repository containts a Helm packages of app
+This repository contains a Helm packages of app
