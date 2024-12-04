@@ -9,9 +9,9 @@ replicaCount: 4
 image:
   registry: jfrog.it-academy.by
   repository: public/nginx-fpm-wordpress
-  tag: "v0.0.19"
+  tag: "v0.0.20"
   # This sets the pull policy for images.
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
 
 # This is for the secretes for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
